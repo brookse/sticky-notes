@@ -6,6 +6,7 @@
 
   margin: 0 auto;
   width: 90%;
+  overflow: scroll;
 }
 
 #container strong {
@@ -42,6 +43,7 @@ ion-header {
 
 ion-grid {
   ion-row {
+    min-height: 100px;
 
     &.header {
       font-weight: bold;
@@ -59,6 +61,9 @@ ion-grid {
         border: 1px solid slategray;
         margin-top: 0px;
         background-color: white;
+        font-size: 12px;
+        height: 100%;
+        text-align: left;
       }
     }
   }
