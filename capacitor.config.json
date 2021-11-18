@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "pm-help",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
