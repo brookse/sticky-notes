@@ -1,11 +1,11 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+  margin: 0 auto;
+  width: 90%;
 }
 
 #container strong {
@@ -24,4 +24,62 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  ion-title {
+    color: black;
+  }
+
+  ion-label {
+    color: darkgray;
+  }
+}
+
+ion-grid {
+  ion-row {
+
+    &.header {
+      font-weight: bold;
+
+    }
+
+    ion-col {
+
+      &.header {
+        font-weight: bold;
+        text-align: right;
+      }
+
+      ion-textarea {
+        border: 1px solid slategray;
+        margin-top: 0px;
+        background-color: white;
+      }
+    }
+  }
+}
+
+.bottom-buttons {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+
+  button {
+    width: 50%;
+    padding: 20px 10px;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: black;
+
+    &.clear-week {
+      color: darkred;
+    }
+  }
 }

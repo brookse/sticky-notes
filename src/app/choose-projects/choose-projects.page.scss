@@ -1,0 +1,47 @@
+ion-header {
+  display: flex;
+
+  ion-title {
+    color: black;
+    padding: 10px 20px;
+  }
+}
+
+.projects-wrapper {
+  margin: 10px;
+  height: calc(100% - 100px);
+  overflow: scroll;
+
+  .projects {
+
+  }
+}
+
+.add-project {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+
+  background: transparent;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  ion-icon {
+    margin-right: 10px;
+  }
+}
+
+.finish {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+  left: 0px;
+
+  text-transform: uppercase;
+  background: forestgreen;
+  font-weight: bold;
+  letter-spacing: 2px;
+}

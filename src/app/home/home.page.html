@@ -1,20 +1,34 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+  <ion-title>
+    Sticky Notes
+  </ion-title>
+  <ion-label *ngIf="lastSave" class="last-save">Last save: {{ lastSave.format('h:mm:ss a') }}</ion-label>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-grid *ngIf="projects && projects.length > 0">
+      <ion-row class="header">
+        <ion-col></ion-col>
+        <ion-col>Monday</ion-col>
+        <ion-col>Tuesday</ion-col>
+        <ion-col>Wednesday</ion-col>
+        <ion-col>Thursday</ion-col>
+        <ion-col>Friday</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let p of projects">
+        <ion-col class="header">{{ p.name }}</ion-col>
+        <ion-col><ion-textarea [(ngModel)]="p.notes.monday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [(ngModel)]="p.notes.tuesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [(ngModel)]="p.notes.wednesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [(ngModel)]="p.notes.thursday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [(ngModel)]="p.notes.friday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="bottom-buttons">
+    <button class="edit-projects" (click)="promptForProjects()">Edit Projects</button>
+    <button class="clear-week" (click)="clearWeek()">Clear Week</button>
   </div>
 </ion-content>

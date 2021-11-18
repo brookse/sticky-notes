@@ -1,0 +1,29 @@
+<ion-header>
+  <!-- <ion-toolbar> -->
+    <ion-title>Choose Projects</ion-title>
+    <button class="add-project" (click)="addProject()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      <ion-label>Add Project</ion-label>
+    </button>
+  <!-- </ion-toolbar> -->
+</ion-header>
+
+<ion-content>
+  <div *ngIf="projects" class="projects-wrapper">
+    <div class="projects">
+      <ion-item-sliding *ngFor="let p of projects; let i = index;">
+        <ion-item>
+          <ion-input placeholder="Project Name" [(ngModel)]="p.name">
+          </ion-input>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option color="danger">
+            <button (click)="delete(p, i)"><ion-icon slot="end" name="trash-outline"></ion-icon></button>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+  </div>
+
+  <button class="finish" (click)="finish()">Finish</button>
+</ion-content>
