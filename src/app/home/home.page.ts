@@ -12,9 +12,10 @@ import * as moment from 'moment';
 export class HomePage {
   projects;
   lastSave;
+  showInfo;
 
   constructor(public modalCtrl: ModalController, private storage: StorageService, public alertCtrl: AlertController) {
-
+    this.showInfo = false;
   }
 
   ionViewWillEnter() {
@@ -85,5 +86,9 @@ export class HomePage {
     });
 
     await alert.present();
+  }
+
+  toggleInfo() {
+    this.showInfo = !this.showInfo;
   }
 }

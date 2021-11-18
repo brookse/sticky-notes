@@ -31,18 +31,37 @@ ion-header {
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  z-index: 999;
+  background: #f7f7f7;
 
   img {
+    cursor: pointer;
     height: 25px;
   }
 
   ion-title {
+    cursor: pointer;
     color: black;
     padding-left: 10px;
   }
 
   ion-label {
     color: darkgray;
+  }
+}
+
+.info {
+  position: absolute;
+  z-index: 990;
+  top: -200px;
+  background-color: #f7f7f7;
+  width: 100%;
+  padding: 0px 20px;
+  box-shadow: 0px 3px 5px 0px rgb(0 0 0 / 57%);
+  transition: all 0.5s ease-out;
+
+  &.showing {
+    top: 45px;
   }
 }
 
@@ -69,6 +88,7 @@ ion-grid {
         font-size: 12px;
         height: 100%;
         text-align: left;
+        --padding-end: 10px;
       }
     }
   }

@@ -1,12 +1,18 @@
 <ion-header [translucent]="true">
-  <img src="assets/icon/favicon.png">
-  <ion-title>
+  <img src="assets/icon/favicon.png" (click)="toggleInfo()">
+  <ion-title (click)="toggleInfo()">
     Sticky Notes
   </ion-title>
   <ion-label *ngIf="lastSave" class="last-save">Last save: {{ lastSave.format('h:mm:ss a') }}</ion-label>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div [class]="showInfo ? 'info showing' : 'info'">
+    <p>Sticky Notes is intended to be an easy place to put quick notes for your projects.</p>
+
+    <p class="foot">Made with 💜 by <a href="https://twitter.com/Lyzzi_Lightyear">Lyzzi Brooks</a></p>
+  </div>
+
   <div id="container">
     <ion-grid *ngIf="projects && projects.length > 0">
       <ion-row class="header">
@@ -19,11 +25,11 @@
       </ion-row>
       <ion-row *ngFor="let p of projects">
         <ion-col class="header" size="1">{{ p.name }}</ion-col>
-        <ion-col><ion-textarea [(ngModel)]="p.notes.monday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [(ngModel)]="p.notes.tuesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [(ngModel)]="p.notes.wednesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [(ngModel)]="p.notes.thursday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [(ngModel)]="p.notes.friday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.monday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.tuesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.wednesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.thursday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.friday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
       </ion-row>
     </ion-grid>
   </div>
