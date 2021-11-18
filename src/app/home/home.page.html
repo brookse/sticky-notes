@@ -10,7 +10,7 @@
   <div id="container">
     <ion-grid *ngIf="projects && projects.length > 0">
       <ion-row class="header">
-        <ion-col></ion-col>
+        <ion-col size="1"></ion-col>
         <ion-col>Monday</ion-col>
         <ion-col>Tuesday</ion-col>
         <ion-col>Wednesday</ion-col>
@@ -18,7 +18,7 @@
         <ion-col>Friday</ion-col>
       </ion-row>
       <ion-row *ngFor="let p of projects">
-        <ion-col class="header">{{ p.name }}</ion-col>
+        <ion-col class="header" size="1">{{ p.name }}</ion-col>
         <ion-col><ion-textarea [(ngModel)]="p.notes.monday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
         <ion-col><ion-textarea [(ngModel)]="p.notes.tuesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
         <ion-col><ion-textarea [(ngModel)]="p.notes.wednesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
