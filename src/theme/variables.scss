@@ -1,6 +1,13 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+@font-face {
+  font-family: 'KeepCalm';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/KeepCalm-Medium.ttf');
+}
+
 /** Ionic CSS Variables **/
 :root {
   --ion-background-color: #f7f7f7;

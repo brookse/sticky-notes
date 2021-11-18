@@ -48,5 +48,11 @@ ion-header {
 
 ion-item-option {
   color: white;
+  background-color: darkred;
   font-size: 25px;
+  border-radius: 6px;
+
+  ion-icon {
+    margin-left: 0px;
+  }
 }

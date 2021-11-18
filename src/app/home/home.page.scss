@@ -43,6 +43,8 @@ ion-header {
     cursor: pointer;
     color: black;
     padding-left: 10px;
+    font-family: 'KeepCalm';
+    color: #484848;
   }
 
   ion-label {
@@ -70,15 +72,17 @@ ion-grid {
     min-height: 100px;
 
     &.header {
-      font-weight: bold;
       min-height: 25px;
+      font-family: 'KeepCalm';
+      color: #484848;
     }
 
     ion-col {
 
       &.header {
-        font-weight: bold;
         text-align: right;
+        font-family: 'KeepCalm';
+        color: #484848;
       }
 
       ion-textarea {
@@ -89,6 +93,7 @@ ion-grid {
         height: 100%;
         text-align: left;
         --padding-end: 10px;
+        border-color: #CFCFCF;
       }
     }
   }
@@ -106,7 +111,8 @@ ion-grid {
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
-    color: black;
+    color: #484848;
+    font-family: 'KeepCalm';
 
     &.clear-week {
       color: darkred;
