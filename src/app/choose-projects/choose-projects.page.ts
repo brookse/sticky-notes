@@ -11,17 +11,14 @@ export class ChooseProjectsPage {
   projects;
 
   constructor(private modalCtrl: ModalController, private storage: StorageService) {
-    console.log('we here')
     this.storage.getProjects()
     .then(p => {
       if (!p || p.length === 0) {
         // starting fresh
         this.projects = [];
-        console.log('projects;',this.projects)
       } else {
         // editing
         this.projects = p;
-        console.log('projects;',this.projects)
       }
     });
   }
@@ -44,7 +41,6 @@ export class ChooseProjectsPage {
   }
 
   async finish() {
-    console.log('P:',this.projects)
     this.storage.setProjects(this.projects);
     await this.modalCtrl.dismiss({
       'projects': this.projects

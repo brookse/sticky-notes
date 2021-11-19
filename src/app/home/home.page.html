@@ -3,7 +3,7 @@
   <ion-title (click)="toggleInfo()">
     Sticky Notes
   </ion-title>
-  <ion-label *ngIf="lastSave" class="last-save">Last save: {{ lastSave.format('h:mm:ss a') }}</ion-label>
+  <ion-label *ngIf="lastSave" class="last-save">Last save: {{ lastSave }}</ion-label>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -25,11 +25,11 @@
       </ion-row>
       <ion-row *ngFor="let p of projects">
         <ion-col class="header" size="1">{{ p.name }}</ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.monday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.tuesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.wednesday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.thursday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.friday" (ionBlur)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.monday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.tuesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.wednesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.thursday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.friday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
       </ion-row>
     </ion-grid>
   </div>

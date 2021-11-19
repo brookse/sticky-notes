@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { EventsService } from './events.service';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +9,11 @@ import { Storage } from '@ionic/storage-angular';
 export class StorageService {
   private _storage: Storage | null = null;
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private events: EventsService) {
     this.init();
   }
 
   async init() {
-    // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
     this._storage = storage;
   }
@@ -20,6 +21,9 @@ export class StorageService {
   // DB stuff
   public setProjects(value: any) {
     this._storage?.set('projects', value);
+    this.events.publish('saved', {
+      time: moment().format('h:mm:ss a')
+    });
   }
 
   public getProjects() {

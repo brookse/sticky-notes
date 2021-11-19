@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ChooseProjectsPage } from '../choose-projects/choose-projects.page';
 import { StorageService } from '../storage.service';
-import * as moment from 'moment';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-home',
@@ -14,25 +14,28 @@ export class HomePage {
   lastSave;
   showInfo;
 
-  constructor(public modalCtrl: ModalController, private storage: StorageService, public alertCtrl: AlertController) {
+  constructor(public modalCtrl: ModalController, private storage: StorageService,
+    public alertCtrl: AlertController, public events: EventsService
+  ) {
     this.showInfo = false;
   }
 
   ionViewWillEnter() {
     this.storage.getProjects()
     .then(allProjects => {
-      console.log('allProjects:',allProjects)
       if (!allProjects || allProjects.length === 0) {
-        console.log('should prompt')
         this.promptForProjects();
       } else {
         this.projects = allProjects;
       }
     });
+
+    this.events.subscribe('saved', (data: any) => {
+      this.lastSave = data.time;
+    });
   }
 
   async promptForProjects() {
-    console.log('prompting')
     const modal = await this.modalCtrl.create({
       component: ChooseProjectsPage,
       // cssClass: 'template',
@@ -42,14 +45,10 @@ export class HomePage {
     await modal.present();
     let p = await modal.onWillDismiss();
     this.projects = p.data.projects;
-    this.lastSave = moment();
-    console.log('P:',p.data.projects)
   }
 
   saveNotes() {
     this.storage.setProjects(this.projects);
-    this.lastSave = moment();
-    console.log('SAVED:',this.projects)
   }
 
   async clearWeek() {
@@ -77,9 +76,7 @@ export class HomePage {
                 friday: ''
               };
             }
-            console.log('cleared:',this.projects)
             this.storage.setProjects(this.projects);
-            this.lastSave = moment();
           }
         }
       ]
