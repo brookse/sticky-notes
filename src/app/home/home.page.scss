@@ -6,7 +6,6 @@
 
   margin: 0 auto;
   width: 100%;
-  overflow: scroll;
 }
 
 #container strong {
@@ -118,4 +117,35 @@ ion-grid {
       color: darkred;
     }
   }
+}
+
+.height-selector {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  font-size: 14px;
+  font-family: 'KeepCalm';
+  opacity: 0.3;
+
+  ion-label {
+    padding-bottom: 3px;
+  }
+
+  button {
+    background-color: transparent;
+    color: #484848;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s all;
+
+    :hover {
+      color: forestgreen;
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 390px) {
+
 }

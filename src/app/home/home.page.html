@@ -10,26 +10,31 @@
   <div [class]="showInfo ? 'info showing' : 'info'">
     <p>Sticky Notes is intended to be an easy place to put quick notes for your projects.</p>
 
-    <p class="foot">Made with 💜 by <a href="https://twitter.com/Lyzzi_Lightyear">Lyzzi Brooks</a></p>
+    <p class="foot">Made with 💜 by <a href="https://www.lyzzibrooks.com/">Lyzzi Brooks</a></p>
   </div>
 
   <div id="container">
+    <div class="height-selector">
+      <button (click)="reduceHeight()" *ngIf="textHeight > 5"><ion-icon name="remove-circle-outline"></ion-icon></button>
+      <ion-label>Input height</ion-label>
+      <button (click)="increaseHeight()"><ion-icon name="add-circle-outline"></ion-icon></button>
+    </div>
     <ion-grid *ngIf="projects && projects.length > 0">
       <ion-row class="header">
         <ion-col size="1"></ion-col>
-        <ion-col>Monday</ion-col>
-        <ion-col>Tuesday</ion-col>
-        <ion-col>Wednesday</ion-col>
-        <ion-col>Thursday</ion-col>
-        <ion-col>Friday</ion-col>
+        <ion-col><ion-label>{{ headers.mo }}</ion-label></ion-col>
+        <ion-col><ion-label>{{ headers.tu }}</ion-label></ion-col>
+        <ion-col><ion-label>{{ headers.we }}</ion-label></ion-col>
+        <ion-col><ion-label>{{ headers.th }}</ion-label></ion-col>
+        <ion-col><ion-label>{{ headers.fr }}</ion-label></ion-col>
       </ion-row>
       <ion-row *ngFor="let p of projects">
         <ion-col class="header" size="1">{{ p.name }}</ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.monday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.tuesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.wednesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.thursday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea rows="5" [(ngModel)]="p.notes.friday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.monday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.tuesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.wednesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.thursday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.friday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
       </ion-row>
     </ion-grid>
   </div>
