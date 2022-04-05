@@ -56,6 +56,16 @@ export class HomePage {
         this.promptForProjects();
       } else {
         this.projects = allProjects;
+        // migration: check if isOff is there, if not added it.
+        if (!this.projects.isOff) {
+          this.projects.isOff = {
+            monday: false,
+            tuesday: false,
+            wednesday: false,
+            thursday: false,
+            friday: false
+          };
+        }
       }
     });
 
@@ -118,5 +128,9 @@ export class HomePage {
 
   toggleInfo() {
     this.showInfo = !this.showInfo;
+  }
+
+  toggleOffStatus(dayOff) {
+    this.projects.isOff[dayOff] = !this.projects.isOff[dayOff];
   }
 }

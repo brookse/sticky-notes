@@ -22,19 +22,80 @@
     <ion-grid *ngIf="projects && projects.length > 0">
       <ion-row class="header">
         <ion-col size="1"></ion-col>
-        <ion-col><ion-label>{{ headers.mo }}</ion-label></ion-col>
-        <ion-col><ion-label>{{ headers.tu }}</ion-label></ion-col>
-        <ion-col><ion-label>{{ headers.we }}</ion-label></ion-col>
-        <ion-col><ion-label>{{ headers.th }}</ion-label></ion-col>
-        <ion-col><ion-label>{{ headers.fr }}</ion-label></ion-col>
+        <ion-col>
+          <div class="header-content">
+            <ion-label>{{ headers.mo }}</ion-label>
+            <button (click)="toggleOffStatus('monday')" [class]="projects.isOff.monday ? 'isOff' : ''">
+              <ion-icon *ngIf="projects.isOff.monday" name="close-circle-outline"></ion-icon>
+              <ion-icon *ngIf="!projects.isOff.monday" name="ellipse-outline"></ion-icon>
+              <div class="hover-content">
+                <ion-label><b>I'm off!</b><br>A visual representation<br>of your available days.</ion-label>
+                <!-- <div class="down-triangle"></div> -->
+              </div>
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="header-content">
+            <ion-label>{{ headers.tu }}</ion-label>
+            <button (click)="toggleOffStatus('tuesday')">
+              <ion-icon *ngIf="projects.isOff.tuesday" name="close-circle-outline"></ion-icon>
+              <ion-icon *ngIf="!projects.isOff.tuesday" name="ellipse-outline"></ion-icon>
+              <div class="hover-content">
+                <ion-label><b>I'm off!</b><br>A visual representation<br>of your available days.</ion-label>
+                <!-- <div class="down-triangle"></div> -->
+              </div>
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="header-content">
+            <ion-label>{{ headers.we }}</ion-label>
+            <button (click)="toggleOffStatus('wednesday')">
+              <ion-icon *ngIf="projects.isOff.wednesday" name="close-circle-outline"></ion-icon>
+              <ion-icon *ngIf="!projects.isOff.wednesday" name="ellipse-outline"></ion-icon>
+              <div class="hover-content">
+                <ion-label><b>I'm off!</b><br>A visual representation<br>of your available days.</ion-label>
+                <!-- <div class="down-triangle"></div> -->
+              </div>
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="header-content">
+            <ion-label>{{ headers.th }}</ion-label>
+            <button (click)="toggleOffStatus('thursday')">
+              <ion-icon *ngIf="projects.isOff.thursday" name="close-circle-outline"></ion-icon>
+              <ion-icon *ngIf="!projects.isOff.thursday" name="ellipse-outline"></ion-icon>
+              <div class="hover-content">
+                <ion-label><b>I'm off!</b><br>A visual representation<br>of your available days.</ion-label>
+                <!-- <div class="down-triangle"></div> -->
+              </div>
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="header-content">
+            <ion-label>{{ headers.fr }}</ion-label>
+            <button (click)="toggleOffStatus('friday')">
+              <ion-icon *ngIf="projects.isOff.friday" name="close-circle-outline"></ion-icon>
+              <ion-icon *ngIf="!projects.isOff.friday" name="ellipse-outline"></ion-icon>
+              <div class="hover-content friday">
+                <ion-label><b>I'm off!</b><br>A visual representation<br>of your available days.</ion-label>
+                <!-- <div class="down-triangle"></div> -->
+              </div>
+            </button>
+          </div>
+        </ion-col>
       </ion-row>
+
       <ion-row *ngFor="let p of projects">
         <ion-col class="header" size="1">{{ p.name }}</ion-col>
-        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.monday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.tuesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.wednesday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.thursday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
-        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.friday" (ionChange)="saveNotes()"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.monday" (ionChange)="saveNotes()" [class]="projects.isOff.monday ? 'disabled' : ''"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.tuesday" (ionChange)="saveNotes()" [class]="projects.isOff.tuesday ? 'disabled' : ''"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.wednesday" (ionChange)="saveNotes()" [class]="projects.isOff.wednesday ? 'disabled' : ''"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.thursday" (ionChange)="saveNotes()" [class]="projects.isOff.thursday ? 'disabled' : ''"></ion-textarea></ion-col>
+        <ion-col><ion-textarea [rows]="textHeight" [(ngModel)]="p.notes.friday" (ionChange)="saveNotes()" [class]="projects.isOff.friday ? 'disabled' : ''"></ion-textarea></ion-col>
       </ion-row>
     </ion-grid>
   </div>

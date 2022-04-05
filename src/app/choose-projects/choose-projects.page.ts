@@ -18,6 +18,16 @@ export class ChooseProjectsPage {
         this.projects = [];
       } else {
         // editing
+        // migration: check if isOff is there, if not added it.
+        if (!p.isOff) {
+          p.isOff = {
+            monday: false,
+            tuesday: false,
+            wednesday: false,
+            thursday: false,
+            friday: false
+          };
+        }
         this.projects = p;
       }
     });
@@ -32,6 +42,13 @@ export class ChooseProjectsPage {
         wednesday: '',
         thursday: '',
         friday: ''
+      },
+      isOff: {
+        monday: false,
+        tuesday: false,
+        wednesday: false,
+        thursday: false,
+        friday: false
       }
     });
   }
